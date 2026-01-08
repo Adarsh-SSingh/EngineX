@@ -61,14 +61,25 @@ Workshops can manage their shop profiles, upload supported cars, list accessorie
 ### Modifications & Accessories
 ![Modification 1](screenshots/mod1.png)
 ![Modification 2](screenshots/mod2.png)
-![Modification 3](screenshots/mod3.png)
 
 ---
 
 ### Booking & Scheduling
-![Booking 1](screenshots/book1.png)
-![Booking 2](screenshots/book2.png)
-![Booking 3](screenshots/book3.png)
+![Booking 1](screenshots/booking1.png)
+![Booking 2](screenshots/booking2.png)
+
+
+---
+
+## 📡 API Endpoints
+
+| Method | Endpoint | Description |
+|------|----------|-------------|
+| POST | `/api/bookings` | Create booking and send notification |
+| GET  | `/api/bookings` | Retrieve all bookings |
+| POST | `/api/login` | User authentication |
+| POST | `/api/register` | User registration |
+| POST | `/api/shop/services/add` | Add shop services |
 
 ---
 
@@ -88,15 +99,10 @@ SQLite Database (enginex.db)
    |  Booking Events
    v
 Telegram Bot Notifications
-
-
-
+```
 
 ---
 
-### 🔹 Project Structure 
-
-```markdown
 ## 📂 Project Structure
 
 ```text
@@ -135,19 +141,12 @@ EngineX/
 ├── bookings_log.txt
 ├── sms_log.txt
 └── README.md
-
-
-## 📡 API Endpoints
-
-| Method | Endpoint | Description |
-|------|----------|-------------|
-| POST | `/api/bookings` | Create booking and send notification |
-| GET  | `/api/bookings` | Retrieve all bookings |
-| POST | `/api/login` | User authentication |
-| POST | `/api/register` | User registration |
-| POST | `/api/shop/services/add` | Add shop services |
+```
 
 ---
+
+---
+
 
 ### Sample Booking Request
 
@@ -170,4 +169,3 @@ EngineX/
     ]
   }
 }
-
