@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Car - EngineX</title>
+    <link rel="icon" type="image/x-icon" href="/static/Img/favicon.png">
+    
+    <!--=============== REMIX ICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/car-selection.css">
+</head>
+<body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+           <a href="/" class="nav__logo">
+                <i class="ri-steering-line"></i>EngineX
+           </a> 
+        </nav>
+    </header>
+
+    <!--==================== HOME SLIDER SECTION ====================-->
+    <section class="home section" id="home">
+        <!-- HOME IMAGE SLIDER -->
+        <div class="home__slider swiper">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide">
+                    <img src="/static/img/home3.png" class="home__bg" alt="">
+                </div>
+                <!-- Slide 2 -->
+                <div class="swiper-slide">
+                    <img src="/static/img/home 1.png" class="home__bg" alt="">
+                </div>
+                <!-- Slide 3 -->
+                <div class="swiper-slide">
+                    <img src="/static/img/home2.png" class="home__bg" alt="">
+                </div>
+            </div>
+
+            <!-- Pagination Dots -->
+            <div class="swiper-pagination"></div>
+
+            <!-- Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+        <div class="shape shape__big"></div>
+        <div class="shape shape__small"></div>
+        
+
+    <!--==================== CAR SELECTION GRID ====================-->
+    <section class="car-selection section" id="cars">
+        <div class="container">
+            <div class="section-title">
+                <h2>Select Your Car</h2>
+                <p>Choose your vehicle to explore compatible modifications and accessories</p>
+            </div>
+
+            <div class="car-grid">
+                <!-- Car 1: Mahindra Scorpio -->
+                <div class="car-card" data-car="mahindra-scorpio">
+                    <div class="car-image">
+                        <img src="/static/img/CARS/Scorpio/THE GREAT SCORPIO.jpeg" alt="Mahindra Scorpio">
+                        <div class="car-badge">SUV</div>
+                    </div>
+                    <div class="car-info">
+                        <h3>Mahindra Scorpio</h3>
+                        <p class="car-model">Classic + N</p>
+                        <div class="car-features">
+                            <span>SUV</span>
+                            <span>Off-road</span>
+                            <span>Adventure</span>
+                        </div>
+                        <button class="select-car-btn" onclick="selectCar('mahindra-scorpio')">
+                            Select Car
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Car 2: Mahindra Thar -->
+                <div class="car-card" data-car="mahindra-thar">
+                    <div class="car-image">
+                        <img src="/static/img/CARS/Thar/Thar (BLACK).jpeg" alt="Mahindra Thar">
+                        <div class="car-badge">Off-road</div>
+                    </div>
+                    <div class="car-info">
+                        <h3>Mahindra Thar</h3>
+                        <p class="car-model">Off-road Legend</p>
+                        <div class="car-features">
+                            <span>SUV</span>
+                            <span>Off-road</span>
+                            <span>Adventure</span>
+                        </div>
+                        <button class="select-car-btn" onclick="selectCar('mahindra-thar')">
+                            Select Car
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Car 3: Maruti Swift -->
+                <div class="car-card" data-car="maruti-swift">
+                    <div class="car-image">
+                        <img src="/static/img/CARS/swift/Modified car.jpeg" alt="Maruti Swift">
+                        <div class="car-badge">Hatchback</div>
+                    </div>
+                    <div class="car-info">
+                        <h3>Maruti Swift</h3>
+                        <p class="car-model">2005–2025</p>
+                        <div class="car-features">
+                            <span>Hatchback</span>
+                            <span>Performance</span>
+                            <span>City Car</span>
+                        </div>
+                        <button class="select-car-btn" onclick="selectCar('maruti-swift')">Select Car</button>
+                    </div>
+                </div>
+                
+                <!-- Car 4: BMW 3 Series -->
+                <div class="car-card" data-car="bmw-3-series">
+                    <div class="car-image">
+                        <img src="/static/img/CARS/BMW3/P90416620_highRes_the-all-new-bmw-m4-c.jpg" alt="BMW 3 Series">
+                        <div class="car-badge">Luxury</div>
+                    </div>
+                    <div class="car-info">
+                        <h3>BMW 3 Series</h3>
+                        <p class="car-model">G20 (2019–Present)</p>
+                        <div class="car-features">
+                            <span>Sedan</span>
+                            <span>Performance</span>
+                            <span>Premium</span>
+                        </div>
+                        <button class="select-car-btn" onclick="selectCar('bmw-3-series')">
+                            Select Car
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Car 5: BMW X5/X6 -->
+                <div class="car-card" data-car="bmw-x5-x6">
+                    <div class="car-image">
+                        <img src="/static/img/CARS/BMW4/BMW M4 Under Stormy Skies.jpeg" alt="BMW X5/X6">
+                        <div class="car-badge">SUV</div>
+                    </div>
+                    <div class="car-info">
+                        <h3>BMW X5 / X6</h3>
+                        <p class="car-model">G05/G06</p>
+                        <div class="car-features">
+                            <span>Luxury SUV</span>
+                            <span>Performance</span>
+                            <span>Premium</span>
+                        </div>
+                        <button class="select-car-btn" onclick="selectCar('bmw-x5-x6')">
+                            Select Car
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Car 6: Maruti Baleno -->
+                <div class="car-card" data-car="maruti-baleno">
+                    <div class="car-image">
+                        <img src="/static/img/CARS/Baleno/Baleno.jpeg" alt="Maruti Baleno">
+                        <div class="car-badge">Premium Hatch</div>
+                    </div>
+                    <div class="car-info">
+                        <h3>Maruti Baleno</h3>
+                        <p class="car-model">2015–2025</p>
+                        <div class="car-features">
+                            <span>Hatchback</span>
+                            <span>Premium</span>
+                            <span>City Car</span>
+                        </div>
+                        <button class="select-car-btn" onclick="selectCar('maruti-baleno')">
+                            Select Car
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Car 7: Honda City -->
+                <div class="car-card" data-car="honda-city">
+                    <div class="car-image">
+                        <img src="/static/img/CARS/honda city/Honda City.jpeg" alt="Honda City">
+                        <div class="car-badge">Sedan</div>
+                    </div>
+                    <div class="car-info">
+                        <h3>Honda City</h3>
+                        <p class="car-model">Premium Sedan</p>
+                        <div class="car-features">
+                            <span>Sedan</span>
+                            <span>Reliable</span>
+                            <span>Fuel Efficient</span>
+                        </div>
+                        <button class="select-car-btn" onclick="selectCar('honda-city')">
+                            Select Car
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Car 8: Honda Civic -->
+                <div class="car-card" data-car="honda-civic">
+                    <div class="car-image">
+                        <img src="/static/img/CARS/Civic/download (50).jpeg" alt="Honda Civic">
+                        <div class="car-badge">Sedan</div>
+                    </div>
+                    <div class="car-info">
+                        <h3>Honda Civic</h3>
+                        <p class="car-model">Sports Sedan</p>
+                        <div class="car-features">
+                            <span>Sedan</span>
+                            <span>Sports</span>
+                            <span>Performance</span>
+                        </div>
+                        <button class="select-car-btn" onclick="selectCar('honda-civic')">
+                            Select Car
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Car 9: Tata Harrier -->
+                <div class="car-card" data-car="tata-harrier">
+                    <div class="car-image">
+                        <img src="/static/img/CARS/Harrier/Luxury looking black coloured Tata harrier car.jpeg" alt="Tata Harrier"> 
+                        <div class="car-badge">SUV</div>
+                    </div>
+                    <div class="car-info">
+                        <h3>Tata Harrier</h3>
+                        <p class="car-model">Premium SUV</p>
+                        <div class="car-features">
+                            <span>SUV</span>
+                            <span>Premium</span>
+                            <span>Adventure</span>
+                        </div>
+                        <button class="select-car-btn" onclick="selectCar('tata-harrier')">
+                            Select Car
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Car 10: Mahindra XUV700 -->
+                <div class="car-card" data-car="mahindra-xuv500">
+                    <div class="car-image">
+                        <img src="/static/img/CARS/XUV/download (52).jpeg" alt="Mahindra XUV500">
+                        <div class="car-badge">SUV</div>
+                    </div>
+                    <div class="car-info">
+                        <h3>Mahindra XUV700</h3>
+                        <p class="car-model">Family SUV</p>
+                        <div class="car-features">
+                            <span>SUV</span>
+                            <span>Family</span>
+                            <span>Comfort</span>
+                        </div>
+                        <button class="select-car-btn" onclick="selectCar('mahindra-xuv500')">
+                            Select Car
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Car 11: Jeep Compass -->
+                <div class="car-card" data-car="jeep-compass">
+                    <div class="car-image">
+                        <img src="/static/img/CARS/Jeep/download (51).jpeg" alt="Jeep Compass">
+                        <div class="car-badge">SUV</div>
+                    </div>
+                    <div class="car-info">
+                        <h3>Jeep Compass</h3>
+                        <p class="car-model">Premium SUV</p>
+                        <div class="car-features">
+                            <span>SUV</span>
+                            <span>Off-road</span>
+                            <span>Premium</span>
+                        </div>
+                        <button class="select-car-btn" onclick="selectCar('jeep-compass')">
+                            Select Car
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Car 12: Kia Seltos -->
+                <div class="car-card" data-car="kia-seltos">
+                    <div class="car-image">
+                        <img src="/static/img/CARS/Kia Seltos/Kia carens.jpeg" alt="Kia Seltos">
+                        <div class="car-badge">SUV</div>
+                    </div>
+                    <div class="car-info">
+                        <h3>Kia Seltos</h3>
+                        <p class="car-model">Compact SUV</p>
+                        <div class="car-features">
+                            <span>SUV</span>
+                            <span>Tech</span>
+                            <span>Style</span>
+                        </div>
+                        <button class="select-car-btn" onclick="selectCar('kia-seltos')">
+                            Select Car
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Car 13: MG Hector -->
+                <div class="car-card" data-car="mg-hector">
+                    <div class="car-image">
+                        <img src="/static/img/CARS/MG hector/mghectorrightfrontthreequarter.webp" alt="MG Hector">
+                        <div class="car-badge">SUV</div>
+                    </div>
+                    <div class="car-info">
+                        <h3>MG Hector</h3>
+                        <p class="car-model">Connected SUV</p>
+                        <div class="car-features">
+                            <span>SUV</span>
+                            <span>Tech</span>
+                            <span>Premium</span>
+                        </div>
+                        <button class="select-car-btn" onclick="selectCar('mg-hector')">
+                            Select Car
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Car 14: Toyota Fortuner -->
+                <div class="car-card" data-car="toyota-fortuner">
+                    <div class="car-image">
+                        <img src="/static/img/CARS/Fortuner/download (47).jpeg" alt="Toyota Fortuner">
+                        <div class="car-badge">SUV</div>
+                    </div>
+                    <div class="car-info">
+                        <h3>Toyota Fortuner</h3>
+                        <p class="car-model">Legend SUV</p>
+                        <div class="car-features">
+                            <span>SUV</span>
+                            <span>Off-road</span>
+                            <span>Reliable</span>
+                        </div>
+                        <button class="select-car-btn" onclick="selectCar('toyota-fortuner')">
+                            Select Car
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Car 15: Tata Nexon -->
+                <div class="car-card" data-car="tata-nexon">
+                    <div class="car-image">
+                        <img src="/static/img/CARS/Nexon/Tata Nexon 2020-2023 XZA Plus DT Roof AMT Diesel On Road Price, Features & Specs, Images.jpeg" alt="Tata Nexon">
+                        <div class="car-badge">Compact SUV</div>
+                    </div>
+                    <div class="car-info">
+                        <h3>Tata Nexon</h3>
+                        <p class="car-model">Compact SUV</p>
+                        <div class="car-features">
+                            <span>SUV</span>
+                            <span>Safe</span>
+                            <span>City</span>
+                        </div>
+                        <button class="select-car-btn" onclick="selectCar('tata-nexon')">
+                            Select Car
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer section">
+        <div class="shape shape__big"></div>
+        <div class="shape shape__small"></div>
+
+        <div class="footer__container container grid">
+            <div class="footer__content">
+                <a href="/" class="footer__logo">
+                    <i class="ri-steering-line"></i>EngineX
+                </a>
+                <p class="footer__description">
+                    Professional car modification services <br> with quality and warranty.
+                </p>
+            </div>
+            <div class="footer__content">
+                <h3 class="footer__title">Services</h3>
+                <ul class="footer__links">
+                    <li>
+                        <a href="/#modifications" class="footer__link">Exterior Mods</a>
+                    </li>
+                    <li>
+                        <a href="/#modifications" class="footer__link">Interior Upgrades</a>
+                    </li>
+                    <li>
+                        <a href="/#modifications" class="footer__link">Performance</a>
+                    </li>
+                    <li>
+                        <a href="/#modifications" class="footer__link">Lighting</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer__content">
+                <h3 class="footer__title">Information</h3>
+                <ul class="footer__links">
+                    <li>
+                        <a href="/car-selection" class="footer__link">Select Car</a>
+                    </li>
+                    <li>
+                        <a href="/#services" class="footer__link">Our Services</a>
+                    </li>
+                    <li>
+                        <a href="/#contact" class="footer__link">Contact Us</a>
+                    </li>
+                    <li>
+                        <a href="/#gallery" class="footer__link">Gallery</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer__content">
+                <h3 class="footer__title">Follow us</h3>
+                <ul class="footer__social">
+                    <a href="#" target="_blank" class="footer__social-links">
+                        <i class="ri-facebook-fill"></i>
+                    </a> 
+                    <a href="#" target="_blank" class="footer__social-links">
+                        <i class="ri-instagram-fill"></i>
+                    </a> 
+                    <a href="#" target="_blank" class="footer__social-links">
+                        <i class="ri-twitter-fill"></i>
+                    </a>
+                    <a href="#" target="_blank" class="footer__social-links">
+                        <i class="ri-youtube-fill"></i>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <span class="footer__copy">&#169; EngineX. All rights reserved</span>
+    </footer>
+
+    <!--========== SCROLL UP ==========-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-line"></i>
+    </a>
+
+    <!--=============== SCROLL REVEAL ===============-->
+    <script src="/static/js/scrollreveal.min.js"></script>
+
+    <!--=============== SWIPER JS ===============-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script> 
+
+    <!--=============== MAIN JS ===============-->
+    <script src="/static/js/main.js"></script>
+
+    <script>
+        // Car selection function
+        function selectCar(carId) {
+            // Modifications page pe redirect with car ID
+            window.location.href = `/modifications?car=${carId}`;
+        }
+
+        // Optional: Event listeners for better functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectButtons = document.querySelectorAll('.select-car-btn');
+            
+            selectButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const carCard = this.closest('.car-card');
+                    const carId = carCard.getAttribute('data-car');
+                    selectCar(carId);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

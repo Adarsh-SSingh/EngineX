@@ -1,0 +1,5 @@
+[2025-11-15 13:28:14.610920] SMS Alert: asdf - BMW 3 Series - ₹40500
+[2025-11-15 13:32:01.042960] SMS Alert: asdf - Mahindra Scorpio - ₹40500
+[2025-11-15 14:29:28.065327] SMS Alert: AAS - Mahindra Scorpio - ₹18500
+[2025-11-25 22:46:57.310818] SMS Alert: AAS - BMW X5 / X6 - ₹28500
+[2025-11-25 22:48:02.509597] SMS Alert: AAS - Honda City - ₹34500

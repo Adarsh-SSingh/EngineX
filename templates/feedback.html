@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - EngineX</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #111;
+            color: #fff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 32px;
+            font-weight: 600;
+            color: #00c2de;
+        }
+
+        .feedback-box {
+            background: rgba(255,255,255,0.07);
+            padding: 25px;
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            margin-bottom: 35px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            margin-top: 8px;
+            margin-bottom: 16px;
+            font-size: 16px;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+        }
+
+        textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #00c2de;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 12px;
+            color: black;
+        }
+
+        button:hover {
+            background: #09eaff;
+        }
+
+        /* Feedback display cards */
+        .review-card {
+            background: rgba(255,255,255,0.06);
+            padding: 20px;
+            border-radius: 14px;
+            margin-bottom: 18px;
+            border-left: 4px solid #00c2de;
+        }
+
+        .username {
+            font-size: 20px;
+            font-weight: 600;
+            color: #00eaff;
+        }
+
+        .rating {
+            color: gold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Share Your Experience</h2>
+
+    <!-- Feedback Form -->
+    <div class="feedback-box">
+        <input type="text" id="username" placeholder="Enter your name">
+        
+        <select id="rating">
+            <option value="5">⭐⭐⭐⭐⭐ - Excellent</option>
+            <option value="4">⭐⭐⭐⭐ - Very Good</option>
+            <option value="3">⭐⭐⭐ - Good</option>
+            <option value="2">⭐⭐ - Average</option>
+            <option value="1">⭐ - Poor</option>
+        </select>
+
+        <textarea id="message" placeholder="Write your feedback here..."></textarea>
+
+        <button onclick="handleSubmitFeedback()">Submit Feedback</button>
+    </div>
+
+    <h2 style="margin-top:40px;">Recent Reviews</h2>
+    <div id="feedbackList"></div>
+</div>
+
+
+<script>
+function handleSubmitFeedback() {
+    const username = document.getElementById('username').value || "Anonymous";
+    const rating = document.getElementById('rating').value;
+    const message = document.getElementById('message').value;
+
+    if (!message.trim()) {
+        alert("Please enter a message.");
+        return;
+    }
+
+    fetch('/api/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify({ username, rating, message })
+    })
+    .then(res => res.json())
+    .then(res => {
+        if(res.success) {
+            alert("Thank you for your feedback 🤝");
+            window.location.reload();
+        }
+    });
+}
+
+// Load feedback list
+function loadFeedback() {
+    fetch('/api/feedback')
+    .then(res => res.json())
+    .then(data => {
+        const container = document.getElementById('feedbackList');
+        data.feedbacks.forEach(fb => {
+            container.innerHTML += `
+                <div class="review-card">
+                    <div class="username">${fb.username}</div>
+                    <div class="rating">${"⭐".repeat(fb.rating)}</div>
+                    <p>${fb.message}</p>
+                </div>
+            `;
+        });
+    });
+}
+loadFeedback();
+</script>
+
+</body>
+</html>

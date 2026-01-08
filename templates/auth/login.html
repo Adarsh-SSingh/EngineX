@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/static/img/favicon.png">
+    <title>Login - EngineX</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at top, #1b2735 0, #090a0f 55%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f8f9fa;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 420px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 18px;
+            padding: 32px 28px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .auth-title {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .auth-subtitle {
+            font-size: 0.9rem;
+            text-align: center;
+            margin-bottom: 22px;
+            color: #ccc;
+        }
+
+        label {
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 11px 12px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            margin-bottom: 14px;
+            background: rgba(0,0,0,0.5);
+            color: #f8f9fa;
+            font-size: 0.95rem;
+        }
+
+        input:focus, select:focus {
+            box-shadow: 0 0 0 2px #00c2de;
+        }
+
+        .auth-btn {
+            width: 100%;
+            margin-top: 4px;
+            padding: 11px;
+            border-radius: 999px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #00c2de, #09eaff);
+            color: #000;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .auth-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 25px rgba(0, 194, 222, 0.35);
+        }
+
+        .bottom-text {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            text-align: center;
+            color: #bbb;
+        }
+
+        .bottom-text a {
+            color: #00c2de;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .bottom-text a:hover {
+            text-decoration: underline;
+        }
+
+        .error-text {
+            font-size: 0.85rem;
+            color: #ff7676;
+            margin-bottom: 8px;
+            display: none;
+        }
+
+        .success-text {
+            font-size: 0.9rem;
+            color: #22c55e;
+            margin-bottom: 8px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="auth-container">
+    <h2 class="auth-title">Welcome Back</h2>
+    <p class="auth-subtitle">Login to continue with EngineX</p>
+
+    <p id="errorText" class="error-text"></p>
+    <p id="successText" class="success-text"></p>
+
+    <label for="email">Email</label>
+    <input id="email" type="email" placeholder="Enter your email">
+
+    <label for="password">Password</label>
+    <input id="password" type="password" placeholder="Enter your password">
+
+    <button class="auth-btn" onclick="handleLogin()">Login</button>
+
+    <p class="bottom-text">
+        Don't have an account?
+        <a href="/register">Register here</a>
+    </p>
+</div>
+
+<script>
+function handleLogin() {
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const errorText = document.getElementById('errorText');
+    const successText = document.getElementById('successText');
+
+    errorText.style.display = 'none';
+    successText.style.display = 'none';
+
+    if (!email || !password) {
+        errorText.innerText = "Please fill all fields.";
+        errorText.style.display = 'block';
+        return;
+    }
+
+    fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify({ email, password })
+    })
+    .then(res => res.json())
+    .then(res => {
+
+        console.log("Login Response:", res);   // DEBUG LOG
+
+        if (!res.success) {
+            errorText.innerText = res.message || "Login failed.";
+            errorText.style.display = 'block';
+            return;
+        }
+
+        // Save user details
+        localStorage.setItem("enginex_user", JSON.stringify({
+            id: res.user.id,
+            username: res.user.username,
+            email: res.user.email,
+            role: res.user.role,
+            phone: res.user.phone,
+            profile_pic: res.user.profile_pic || "/static/img/user-default.png"
+        }));
+
+        console.log("Saved to LocalStorage:", res.user); // DEBUG LOG
+
+        successText.innerText = "Login successful! Redirecting...";
+        successText.style.display = 'block';
+
+        setTimeout(() => {
+            if (res.user.role === 'shopkeeper') {
+                window.location.href = "/shop/dashboard";
+            } else {
+                window.location.href = "/";
+            }
+        }, 800);
+    })
+    .catch(err => {
+        console.error(err);
+        errorText.innerText = "Server error. Try again.";
+        errorText.style.display = 'block';
+    });
+}
+</script>
+
+</body>
+</html>

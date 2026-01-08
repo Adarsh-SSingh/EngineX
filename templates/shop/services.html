@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/static/img/favicon.png">
+<title>Add Services • EngineX</title>
+<link rel="stylesheet" href="/static/css/style.css">
+<style>
+body{background:#070707;color:#fff;font-family:Segoe UI, sans-serif;padding:20px}
+.container{max-width:900px;margin:40px auto;background:rgba(255,255,255,0.03);padding:20px;border-radius:12px;border:1px solid #222}
+h2{color:#00eaff}
+label{color:#ccc}
+input, textarea { width:100%; padding:10px; margin-top:6px; border-radius:8px; border:none; background:#111; color:#fff }
+.upload-box{ background:#111; padding:10px; border-radius:8px }
+button{ background:linear-gradient(135deg,#00c2de,#00eaff); color:#000; padding:12px 16px; border:none; border-radius:10px; font-weight:700; cursor:pointer}
+#preview{display:flex; gap:8px; margin-top:10px; flex-wrap:wrap}
+#preview img{width:90px; border-radius:8px}
+.message{margin-top:12px}
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>Add Service</h2>
+  <div>
+    <label>Service Name</label>
+    <input id="service_name" placeholder="e.g. ECU Remap, Alloys, Spoiler, Door Guard, Lighting Upgrade">
+  </div>
+  <div>
+    <label>Price (₹)</label>
+    <input id="price" type="number" placeholder="Enter price">
+  </div>
+  <div>
+    <label>Description</label>
+    <textarea id="description" rows="4" placeholder="Short description"></textarea>
+  </div>
+  <div>
+    <label>Images</label>
+    <input id="images" type="file" accept="image/*" multiple class="upload-box">
+    <div id="preview"></div>
+  </div>
+
+  <div style="margin-top:12px">
+    <button id="saveBtn">Save Service</button>
+  </div>
+
+  <p class="message" id="message"></p>
+</div>
+
+<script>
+const channel = new BroadcastChannel('enginex');
+let user = JSON.parse(localStorage.getItem('enginex_user') || 'null');
+
+document.getElementById('images').addEventListener('change', (ev)=>{
+  const preview = document.getElementById('preview'); 
+  preview.innerHTML = '';
+
+  [...ev.target.files].forEach(f=>{
+    const img = document.createElement('img'); 
+    img.src = URL.createObjectURL(f); 
+    preview.appendChild(img);
+  });
+});
+
+document.getElementById('saveBtn').addEventListener('click', ()=>{
+  if(!user) return showMsg('Please login first', false);
+
+  const name = document.getElementById('service_name').value.trim();
+  const price = document.getElementById('price').value;
+  const desc = document.getElementById('description').value.trim();
+  const files = document.getElementById('images').files;
+
+  if(!name || !price || !desc) 
+      return showMsg('All fields required', false);
+
+  const fd = new FormData();
+  fd.append('owner_id', user.id);   
+  fd.append('service_name', name);
+  fd.append('price', price);
+  fd.append('description', desc);
+
+  for(let i=0;i<files.length;i++) 
+      fd.append('images', files[i]);
+
+  fetch('/api/shop/services/add', { method:'POST', body: fd })
+    .then(r=>r.json())
+    .then(res=>{
+      if(res.success){
+        
+        window.location.href = "/shop/dashboard";
+        return;
+      }
+      else showMsg(res.message || 'Failed', false);
+    })
+    .catch(e=>{
+      console.error(e); 
+      showMsg('Server error', false);
+    });
+});
+
+function showMsg(text, ok){
+  const el = document.getElementById('message'); 
+  el.innerText = text; 
+  el.style.color = ok ? '#22c55e' : '#ff6b6b';
+}
+</script>
+</body>
+</html>

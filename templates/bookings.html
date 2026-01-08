@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Bookings - EngineX</title>
+</head>
+<body>
+    <h1>My Bookings</h1>
+    <div id="bookingsList"></div>
+    
+    <script>
+        fetch('/api/bookings')
+            .then(r => r.json())
+            .then(bookings => {
+                const list = document.getElementById('bookingsList');
+                bookings.forEach(booking => {
+                    list.innerHTML += `
+                        <div class="booking-card">
+                            <h3>Booking ID: ${booking.booking_id}</h3>
+                            <p>Car: ${booking.car_name}</p>
+                            <p>Amount: ₹${booking.total_amount}</p>
+                            <p>Status: ${booking.status}</p>
+                        </div>
+                    `;
+                });
+            });
+    </script>
+</body>
+</html>

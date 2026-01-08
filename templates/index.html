@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="/static/img/favicon.png" type="image/x-icon">
+
+    <!--=============== REMIX ICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+
+    <title>EngineX</title>
+    <link rel="icon" type="image/x-icon" href="/static/Img/favicon.png">
+</head>
+<body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+           <a href="/" class="nav__logo">
+                <i class="ri-steering-line"></i>EngineX
+           </a> 
+           <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list" id="navUserControls">
+
+                        <li class="nav__item">
+                            <a href="#home" class="nav__link active-link">Home</a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="#services" class="nav__link">Services</a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="/feedback" class="nav__link">Feedback</a>
+                        </li>
+
+                        <!-- GUEST ONLY -->
+                        <li class="nav__item logged-out">
+                            <a href="/login" class="nav__link">Login</a>
+                        </li>
+
+                        <li class="nav__item logged-out">
+                            <a href="/register" class="nav__link">Register</a>
+                        </li>
+
+                        <!-- SHOPKEEPER EXCLUSIVE -->
+                        <li class="nav__item shop-only" style="display:none;">
+                            <a href="/shop/dashboard" class="nav__link">Dashboard</a>
+                        </li>
+                        <!-- USER LOGGED IN -->
+                        <li class="nav__item logged-in" style="display:none;">
+                            <a href="/profile"> <span class="nav__link" id="usernameDisplay">Hi, User</span></a>
+                        </li>
+                        
+                        <!-- USER PROFILE ICON ALWAYS VISIBLE -->
+                        <li class="nav__item logged-in" style="display:none;">
+                            <a href="/profile" class="nav__link" style="padding:0;">
+                                <div id="navProfileImgContainer"
+                                    style="
+                                        width:34px;
+                                        height:34px;
+                                        border-radius:50%;
+                                        overflow:hidden;
+                                        display:flex;
+                                        align-items:center;
+                                        justify-content:center;
+                                        border:2px solid #00c2de;
+                                    ">
+                                    <i id="navProfileIcon"
+                                    class="ri-user-3-fill"
+                                    style="font-size:22px; color:white;">
+                                    </i>
+                                </div>
+                            </a>
+                        </li>
+
+
+
+
+                        <li class="nav__item logged-in" style="display:none;">
+                            <button onclick="logout()" class="nav__link" style="background:none;border:none;">
+                                <i class="ri-logout-box-r-line"></i> Logout
+                            </button>
+                        </li>
+
+
+                    </ul>
+
+
+
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+           </div>
+           <!-- Toggle button -->
+            <div class="nav__toggle" id="nav-toggle">
+                  <i class="ri-menu-line"></i> 
+            </div>
+        </nav>
+    </header>
+
+    <!--==================== MAIN ====================-->
+    <main class="main">
+        <!--==================== HOME ====================-->
+        <section class="home section" id="home">
+            <!-- HOME IMAGE SLIDER -->
+            <div class="home__slider swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <img src="/static/img/home3.png" class="home__bg" alt="">
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <img src="/static/img/home 1.png" class="home__bg" alt="">
+                    </div>
+
+                    <!-- slide 3-->
+                    <div class="swiper-slide">
+                        <img src="/static/img/home2.png" class="home__bg" alt="">
+                    </div>
+
+                </div>
+
+                <!-- Pagination Dots -->
+                <div class="swiper-pagination"></div>
+
+                <!-- Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+
+            <div class="shape shape__big"></div>
+            <div class="shape shape__small"></div>
+            <div class="home__container container grid">
+                <div class="home__data">
+                    <h1 class="home__title">Customize Your Dream Car</h1>
+                    <h2 class="home__subtitle">Premium Car Modifications</h2>
+                    <h3 class="home__elec"><i class="ri-tools-fill"></i>Expert Installation</h3>
+                    
+                    <!-- GET STARTED BUTTON -->
+                    <a href="/car-selection" class="home__button-start">
+                        <i class="ri-arrow-right-line"></i>
+                        Start Customizing
+                    </a>
+                </div>
+                <img src="/static/img/BMW_M5_E39-removebg-preview.png" alt="Car Modification" class="home__img">
+                <div class="home__car">
+                    <div class="home__car-data">
+                        <div class="home__car-icon">
+                            <i class="ri-time-line"></i>
+                        </div>
+                        <h2 class="home__car-number">2-3 Days</h2>
+                        <h3 class="home__car-name">Installation</h3>
+                    </div>
+
+                    <div class="home__car-data">
+                        <div class="home__car-icon">
+                            <i class="ri-shield-check-line"></i>
+                        </div>
+                        <h2 class="home__car-number">1 Year</h2>
+                        <h3 class="home__car-name">Warranty</h3>
+                    </div>
+
+                    <div class="home__car-data">
+                        <div class="home__car-icon">
+                            <i class="ri-customer-service-2-line"></i>
+                        </div>
+                        <h2 class="home__car-number">24/7</h2>
+                        <h3 class="home__car-name">Support</h3>
+                    </div>
+                </div>
+                <a href="/car-selection" class="home__button">START</a>
+            </div>
+        </section>
+
+        <!--==================== ABOUT ====================-->
+        <section class="about section" id="services">
+            <div class="about__container container grid">
+                <div class="about__group">
+                    <img src="/static/img/Lamborghini Countach Concept.jpeg" alt="Our Services" class="aboout__img">
+
+                    <div class="about__card">
+                        <h3 class="about__card-title">500+</h3>
+                        <p class="about__card-description">
+                            Cars Modified
+                        </p>
+                    </div>
+                </div>
+                <div class="about__data">
+                    <h2 class="section__title about__title">
+                        Professional Car <br> Modification Services
+                    </h2>
+                    <p class="about__description">
+                        We provide premium car modification services with expert installation, 
+                        quality products, and warranty on all our work. Transform your vehicle 
+                        with our custom solutions for exterior, interior, and performance upgrades.
+                    </p>
+                    
+                    <!-- UPDATED BUTTON -->
+                    <a href="/car-selection" class="start-project-btn">
+                        <i class="ri-rocket-2-fill"></i>
+                        Start Your Project
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== POPULAR ====================-->
+        <section class="popular section" id="modifications">
+            <h2 class="section__title">Our Modification Services</h2>
+
+            <div class="popular__container container swiper">
+                <div class="swiper-wrapper">
+                    <article class="popular__card swiper-slide">
+                        <div class="shape shape__smaller"></div>
+
+                        <h1 class="popular__title">Exterior</h1>
+                        <h3 class="popular__subtitle">Body Modifications</h3>
+
+                        <img src="/static/img/ferrari v12.jpeg" alt="Exterior Modifications" class="popular__img">
+                        <div class="popular__data">
+                            <div class="popular__data-group">
+                                <i class="ri-time-line"></i>2-3 Days
+                            </div>
+                            <div class="popular__data-group">
+                                <i class="ri-shield-check-line"></i>1 Year
+                            </div>
+                        </div>
+                        <h3 class="popular__price">Starts ₹15,000</h3>
+                        <button class="button popular__button">
+                            <i class="ri-information-line"></i>
+                        </button>
+                    </article>
+
+                    <article class="popular__card swiper-slide">
+                        <div class="shape shape__smaller"></div>
+
+                        <h1 class="popular__title">Interior</h1>
+                        <h3 class="popular__subtitle">Luxury Upgrades</h3>
+
+                        <img src="/static/img/download (70).jpeg" alt="Interior Modifications" class="popular__img">
+                        <div class="popular__data">
+                            <div class="popular__data-group">
+                                <i class="ri-time-line"></i>1-2 Days
+                            </div>
+                            <div class="popular__data-group">
+                                <i class="ri-shield-check-line"></i>6 Months
+                            </div>
+                        </div>
+                        <h3 class="popular__price">Starts ₹8,000</h3>
+                        <button class="button popular__button">
+                            <i class="ri-information-line"></i>
+                        </button>
+                    </article>
+
+                    <article class="popular__card swiper-slide">
+                        <div class="shape shape__smaller"></div>
+
+                        <h1 class="popular__title">Performance</h1>
+                        <h3 class="popular__subtitle">Engine Upgrades</h3>
+
+                        <img src="/static/img/Gabo'sChrysler300.jpeg" alt="Performance Modifications" class="popular__img">
+                        <div class="popular__data">
+                            <div class="popular__data-group">
+                                <i class="ri-time-line"></i>1 Day
+                            </div>
+                            <div class="popular__data-group">
+                                <i class="ri-shield-check-line"></i>2 Years
+                            </div>
+                        </div>
+                        <h3 class="popular__price">Starts ₹12,000</h3>
+                        <button class="button popular__button">
+                            <i class="ri-information-line"></i>
+                        </button>
+                    </article>
+
+                    <article class="popular__card swiper-slide">
+                        <div class="shape shape__smaller"></div>
+
+                        <h1 class="popular__title">Lighting</h1>
+                        <h3 class="popular__subtitle">LED Upgrades</h3>
+
+                        <img src="/static/img/download (73).jpeg" alt="Lighting Modifications" class="popular__img">
+                        <div class="popular__data">
+                            <div class="popular__data-group">
+                                <i class="ri-time-line"></i>1 Day
+                            </div>
+                            <div class="popular__data-group">
+                                <i class="ri-shield-check-line"></i>1 Year
+                            </div>
+                        </div>
+                        <h3 class="popular__price">Starts ₹6,000</h3>
+                        <button class="button popular__button">
+                            <i class="ri-information-line"></i>
+                        </button>
+                    </article>
+
+                    <article class="popular__card swiper-slide">
+                        <div class="shape shape__smaller"></div>
+
+                        <h1 class="popular__title">Wheels</h1>
+                        <h3 class="popular__subtitle">Alloy Wheels</h3>
+
+                        <img src="/static/img/download (67).jpeg" alt="Wheels Modifications" class="popular__img">
+                        <div class="popular__data">
+                            <div class="popular__data-group">
+                                <i class="ri-time-line"></i>3-4 Hours
+                            </div>
+                            <div class="popular__data-group">
+                                <i class="ri-shield-check-line"></i>2 Years
+                            </div>
+                        </div>
+                        <h3 class="popular__price">Starts ₹20,000</h3>
+                        <button class="button popular__button">
+                            <i class="ri-information-line"></i>
+                        </button>
+                    </article>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <!-- GET STARTED CTA -->
+            <div class="popular__cta" style="text-align: center; margin-top: 3rem;">
+                <a href="/car-selection" class="start-customizing-btn">
+                    <i class="ri-tools-fill"></i>
+                    Start Customizing Your Car
+                </a>
+            </div>
+        </section>
+
+        <!--==================== FEATURES ====================-->
+        <section class="features section">
+            <h2 class="section__title">
+                Why Choose Us
+            </h2> 
+            <div class="features__container container grid">
+                <div class="features__group">
+                    <img src="/static/img/BMW_M5_E39-removebg-preview.png" alt="Why Choose Us" class="features__img">
+
+                    <div class="features__card features__card-1">
+                        <h3 class="features__card-title">Expert</h3>
+                        <p class="features__card-description">Professional <br> Installation</p>
+                    </div>
+
+                    <div class="features__card features__card-2">
+                        <h3 class="features__card-title">Quality</h3>
+                        <p class="features__card-description">Premium <br> Materials</p>
+                    </div>
+
+                    <div class="features__card features__card-3">
+                        <h3 class="features__card-title">Warranty</h3>
+                        <p class="features__card-description">Service <br> Guarantee</p>
+                    </div>
+                </div>
+
+                <img src="/static/img/map.svg" alt="Service Areas" class="features__map">
+            </div>
+        </section>
+
+        <!--==================== FEATURED ====================-->
+        <section class="featured section" id="gallery">
+            <h2 class="section__title">Modification Categories</h2>
+
+            <div class="featured__container container">
+                <ul class="featured__filters">
+                    <li>
+                        <button class="featured__items active-featured" data-filter="all">
+                            <span>All</span>   
+                        </button>
+                    </li>
+
+                    <li>
+                        <button class="featured__items" data-filter=".exterior">
+                            <i class="ri-car-line" style="font-size: 1.5rem;"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="featured__items" data-filter=".interior">
+                            <i class="ri-sofa-line" style="font-size: 1.5rem;"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="featured__items" data-filter=".performance">
+                            <i class="ri-flashlight-fill" style="font-size: 1.5rem;"></i>
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="featured__content grid">
+                    <article class="featured__card mix exterior">
+                        <div class="shape shape__smaller"></div>
+
+                        <h1 class="featured__title">Body Kits</h1>
+                        <h3 class="featured__subtitle">Full Body Upgrade</h3>
+                        <img src="/static/img/Hypersuv_concept_Mitsubishi_evolution_11_front_end_nismo_full_bumper_side_skirt_lbwk-removebg-preview.png" alt="Body Kit" class="featured__img">
+                        <h3 class="featured__price">₹45,000</h3>
+                        <button class="button featured__button">
+                            <i class="ri-information-line"></i>
+                        </button>
+                    </article>
+
+                    <article class="featured__card mix exterior">
+                        <div class="shape shape__smaller"></div>
+
+                        <h1 class="featured__title">Spoilers</h1>
+                        <h3 class="featured__subtitle">Rear Spoiler</h3>
+                        <img src="/static/img/Blacked-Out_BMW_M3___A_Nighttime_Performance_Icon-removebg-preview.png" alt="Spoiler" class="featured__img">
+                        <h3 class="featured__price">₹12,000</h3>
+                        <button class="button featured__button">
+                            <i class="ri-information-line"></i>
+                        </button>
+                    </article>
+
+                    <article class="featured__card mix interior">
+                        <div class="shape shape__smaller"></div>
+
+                        <h1 class="featured__title">Seat Covers</h1>
+                        <h3 class="featured__subtitle">Premium Leather</h3>
+                        <img src="/static/img/download__62_-removebg-preview.png" alt="Seat Covers" class="featured__img">
+                        <h3 class="featured__price">₹15,000</h3>
+                        <button class="button featured__button">
+                            <i class="ri-information-line"></i>
+                        </button>
+                    </article>
+                    
+                    <article class="featured__card mix interior">
+                        <div class="shape shape__smaller"></div>
+
+                        <h1 class="featured__title">Steering</h1>
+                        <h3 class="featured__subtitle">Sport Steering</h3>
+                        <img src="/static/img/BMW.jpeg" alt="Steering" class="featured__img">
+                        <h3 class="featured__price">₹8,000</h3>
+                        <button class="button featured__button">
+                            <i class="ri-information-line"></i>
+                        </button>
+                    </article>
+
+                    <article class="featured__card mix performance">
+                        <div class="shape shape__smaller"></div>
+
+                        <h1 class="featured__title">Exhaust</h1>
+                        <h3 class="featured__subtitle">Sports Exhaust</h3>
+                        <img src="/static/img/exhaust.jpeg" alt="Exhaust" class="featured__img">
+                        <h3 class="featured__price">₹22,000</h3>
+                        <button class="button featured__button">
+                            <i class="ri-information-line"></i>
+                        </button>
+                    </article>
+                    
+                </div>
+            </div>
+
+            <!-- FEATURED CTA -->
+            <div class="featured__cta" style="text-align: center; margin-top: 3rem;">
+                <a href="/car-selection" class="button" style="background: linear-gradient(135deg, var(--first-color), #00a8c2); padding: 1.2rem 2.5rem;">
+                    <i class="ri-car-fill"></i>
+                    Select Your Car & Customize
+                </a>
+            </div>
+        </section>
+
+        <!--==================== OFFER ====================-->
+        <section class="offer section" id="contact">
+            <div class="offer__container container grid">
+                <img src="/static/img/carbg.png" alt="Contact Background" class="offer__bg">
+                <div class="offer__data">
+                    <h2 class="section__title offer__title">Ready to Modify <br> Your Car?</h2>
+
+                    <p class="offer__description">
+                        Get a free consultation and quote for your car modification project. 
+                        Our experts will guide you through the best options for your vehicle.
+                    </p>
+                    <a href="/car-selection" class="button-success">
+                        <i class="ri-arrow-right-line"></i>
+                        Start Now
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== LOGOS ====================-->
+   <section class="logos section">
+        <div class="logos__container container grid">
+            
+            <div class="logos__content">
+                <img src="/static/img/exterior.png" alt="Exterior Services" class="logos__img">
+            </div>
+
+            <div class="logos__content">
+                <img src="/static/img/interior.png" alt="Interior Services" class="logos__img">
+            </div>
+            
+            <div class="logos__content">
+                <img src="/static/img/perform.png" alt="Performance Services" class="logos__img">
+            </div>
+
+            <div class="logos__content">
+                <img src="/static/img/light.png" alt="Lighting Services" class="logos__img">
+            </div>
+
+            <div class="logos__content">
+                <img src="/static/img/wheel.png" alt="Wheels Services" class="logos__img">
+            </div>
+
+            <div class="logos__content">
+                <img src="/static/img/sound.png" alt="Audio Services" class="logos__img">
+            </div>
+
+        </div>
+    </section>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer section">
+        <div class="shape shape__big"></div>
+        <div class="shape shape__small"></div>
+
+        <div class="footer__container container grid">
+            <div class="footer__content">
+                <a href="#" class="footer__logo">
+                    <i class="ri-steering-line"></i>EngineX
+                </a>
+                <p class="footer__description">
+                    Professional car modification services <br> with quality and warranty.
+                </p>
+            </div>
+            <div class="footer__content">
+                <h3 class="footer__title">Services</h3>
+                <ul class="footer__links">
+                    <li>
+                        <a href="#modifications" class="footer__link">Exterior Mods</a>
+                    </li>
+                    <li>
+                        <a href="#modifications" class="footer__link">Interior Upgrades</a>
+                    </li>
+                    <li>
+                        <a href="#modifications" class="footer__link">Performance</a>
+                    </li>
+                    <li>
+                        <a href="#modifications" class="footer__link">Lighting</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer__content">
+                <h3 class="footer__title">Information</h3>
+                <ul class="footer__links">
+                    <li>
+                        <a href="/car-selection" class="footer__link">Get Started</a>
+                    </li>
+                    <li>
+                        <a href="#services" class="footer__link">Our Services</a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="footer__link">Contact Us</a>
+                    </li>
+                    <li>
+                        <a href="#gallery" class="footer__link">Gallery</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer__content">
+                <h3 class="footer__title">Follow us</h3>
+                <ul class="footer__social">
+                    <a href="#" target="_blank" class="footer__social-links">
+                        <i class="ri-facebook-fill"></i>
+                    </a> 
+                    <a href="#" target="_blank" class="footer__social-links">
+                        <i class="ri-instagram-fill"></i>
+                    </a> 
+                    <a href="#" target="_blank" class="footer__social-links">
+                        <i class="ri-twitter-fill"></i>
+                    </a>
+                    <a href="#" target="_blank" class="footer__social-links">
+                        <i class="ri-youtube-fill"></i>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <span class="footer__copy">&#169; EngineX. All rights reserved</span>
+    </footer>
+
+
+    <!--========== SCROLL UP ==========-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-line"></i>
+    </a>
+
+    <!--=============== SCROLL REVEAL ===============-->
+    <script src="/static/js/scrollreveal.min.js"></script>
+
+    <!--=============== SWIPER JS ===============-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script> 
+
+    <!--=============== MIXITUP JS ===============-->
+    <script src="/static/js/mixitup.min.js"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
