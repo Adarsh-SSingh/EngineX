@@ -16,6 +16,7 @@ The system allows users to explore car accessories, compare price ranges, select
 
 Workshops can manage their shop profiles, upload supported cars, list accessories, and receive real-time booking notifications via Telegram.
 
+=====================================================
 ---
 
 ## ✨ Features
@@ -42,6 +43,8 @@ Workshops can manage their shop profiles, upload supported cars, list accessorie
 - Telegram bot integration  
 - SQLite database with SQLAlchemy ORM  
 
+
+=====================================================
 ---
 
 ## 🖥️ Screenshots
@@ -51,27 +54,34 @@ Workshops can manage their shop profiles, upload supported cars, list accessorie
 ![Home 2](screenshots/home2.png)
 ![Home 3](screenshots/home3.png)
 
+=====================================================
 ---
 
 ### Car Selection
 ![Car Selection](screenshots/car-selection.png)
 
+=====================================================
 ---
 
 ### Modifications & Accessories
 ![Modification 1](screenshots/mod1.png)
 ![Modification 2](screenshots/mod2.png)
+![Modification 3](screenshots/mod3.png)
 
+=====================================================
 ---
 
 ### Booking & Scheduling
-![Booking 1](screenshots/booking1.png)
-![Booking 2](screenshots/booking2.png)
+![Booking 1](screenshots/book1.png)
+![Booking 2](screenshots/book2.png)
+![Booking 3](screenshots/book3.png)
 
+=====================================================
 ---
 
 ## 🧠 System Architecture
 
+```text
 Client (Browser)
    |
    |  HTML / CSS / JavaScript
@@ -87,13 +97,16 @@ SQLite Database (enginex.db)
 Telegram Bot Notifications
 
 
+=====================================================
 
 ---
 
+### 🔹 Project Structure 
+
+```markdown
 ## 📂 Project Structure
 
-
-
+```text
 EngineX/
 │
 ├── env/                      # Python virtual environment
@@ -130,7 +143,7 @@ EngineX/
 ├── sms_log.txt
 └── README.md
 
----
+=====================================================
 
 ## 📡 API Endpoints
 
@@ -143,7 +156,7 @@ EngineX/
 | POST | `/api/shop/services/add` | Add shop services |
 
 ---
-
+=====================================================
 ### Sample Booking Request
 
 ```json
@@ -165,3 +178,63 @@ EngineX/
     ]
   }
 }
+
+=====================================================
+
+INSTALLATION & SETUP
+--------------------
+
+1. Clone the repository
+   git clone https://github.com/your-username/enginex.git
+
+2. Navigate to the project directory
+   cd enginex
+
+3. Create a virtual environment
+   python -m venv env
+
+4. Activate the environment
+   Windows: env\Scripts\activate
+   Linux/Mac: source env/bin/activate
+
+5. Install required dependencies
+   pip install -r requirements.txt
+
+6. Run the application
+   python main.py
+
+=====================================================
+
+ENVIRONMENT VARIABLES
+---------------------
+
+SECRET_KEY=your_secret_key
+TELEGRAM_BOT_TOKEN=your_bot_token
+TELEGRAM_CHAT_ID=your_chat_id
+
+=====================================================
+
+TECH STACK
+----------
+
+Frontend   : HTML, CSS, JavaScript
+Backend    : Python (Flask)
+Database   : SQLite
+ORM        : SQLAlchemy
+Messaging  : Telegram Bot API
+
+=====================================================
+
+AUTHOR
+------
+
+Adarsh Singh
+Full-Stack Developer
+
+=====================================================
+
+PROJECT STATUS
+--------------
+
+Active | Under Continuous Improvement
+=====================================================
