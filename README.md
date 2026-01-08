@@ -1,4 +1,5 @@
-# 🚗 EngineX — Car Modification & Online Booking Platform (Full-Stack Flask)
+# 🚗 EngineX — Smart Car Modification & Booking Platform
+**Full-Stack Web Application (Flask + SQLite)**
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue?style=for-the-badge)
 ![Flask](https://img.shields.io/badge/Flask-Framework-black?style=for-the-badge&logo=flask)
@@ -6,115 +7,149 @@
 ![Responsive](https://img.shields.io/badge/UI-Responsive-00c2de?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Active-green?style=for-the-badge)
 
-EngineX is a full-stack web platform designed to connect **car owners** with **professional car modification workshops**. Users can explore modification services, apply filters, select their car, calculate pricing in real-time, and schedule installation online.  
-The project includes **Flask APIs**, **SQLite database**, and **Telegram notifications** for new bookings.
+---
+
+## 📌 Overview
+
+**EngineX** is a full-stack web platform that connects **car owners** with **professional car modification workshops**.  
+The system allows users to explore car accessories, compare price ranges, select services, choose nearby shops, and book installations online.
+
+Workshops can manage their shop profiles, upload supported cars, list accessories, and receive real-time booking notifications via Telegram.
 
 ---
 
-## ✨ Key Features
+## ✨ Features
 
-- 🏎 Animated homepage with premium UI
-- 🚘 Car selection interface
-- 🛠 Modification filtering (by category, brand, search)
-- 💰 Real-time total price calculation
-- 📅 Online booking with scheduling
-- 🔔 Telegram notifications for each new booking
-- 🧾 SQLite database with SQLAlchemy ORM
-- 🔐 Login / Register / Profile pages
-- 📱 Full responsive design with Swiper.js & ScrollReveal
+### Customer Features
+- Animated and responsive landing page  
+- Car selection by model  
+- Accessory browsing with global price ranges  
+- Real-time price calculation  
+- Location-based shop discovery  
+- Online booking with scheduling  
 
----
+### Shopkeeper Features
+- Shop registration and profile management  
+- Upload supported car models  
+- Add, edit, and delete accessories  
+- Manage service availability  
+- Receive booking alerts  
 
-## 🏠 Home Page Screenshots
-
-| | | |
-|---|---|---|
-| ![Home 1](screenshots/home1.png) | ![Home 2](screenshots/home2.png) | ![Home 3](screenshots/home3.png) |
-
----
-
-## 🚘 Car Selection Page
-
-| |
-|---|
-| ![Car Selection](screenshots/car-selection.png) |
+### System Capabilities
+- Global accessory price aggregation (min–max)  
+- Secure authentication system  
+- REST API architecture  
+- Telegram bot integration  
+- SQLite database with SQLAlchemy ORM  
 
 ---
 
-## 🛠 Modification Services Page
+## 🖥️ Screenshots
 
-| | | |
-|---|---|---|
-| ![Mod 1](screenshots/mod1.png) | ![Mod 2](screenshots/mod2.png) | ![Mod 3](screenshots/mod3.png) |
+### Home Page
+![Home 1](screenshots/home1.png)
+![Home 2](screenshots/home2.png)
+![Home 3](screenshots/home3.png)
 
 ---
 
-## 📅 Booking & Scheduling Page
+### Car Selection
+![Car Selection](screenshots/car-selection.png)
 
-| | | |
-|---|---|---|
-| ![Book 1](screenshots/book1.png) | ![Book 2](screenshots/book2.png) | ![Book 3](screenshots/book3.png) |
+---
+
+### Modifications & Accessories
+![Modification 1](screenshots/mod1.png)
+![Modification 2](screenshots/mod2.png)
+
+---
+
+### Booking & Scheduling
+![Booking 1](screenshots/booking1.png)
+![Booking 2](screenshots/booking2.png)
 
 ---
 
 ## 🧠 System Architecture
 
-Frontend (HTML / CSS / JS)
-            ↓
+Client (Browser)
+   |
+   |  HTML / CSS / JavaScript
+   v
 Flask Backend (main.py)
-            ↓
-REST API endpoints (/api/bookings POST /api/bookings GET)
-            ↓
+   |
+   |  REST APIs (/api/*)
+   v
 SQLite Database (enginex.db)
-            ↓
-Telegram Bot (Admin Notifications)
+   |
+   |  Booking Events
+   v
+Telegram Bot Notifications
+
+
+
+---
 
 ## 📂 Project Structure
 
+
+
 EngineX/
 │
-├── env/                       # Python virtual environment
-│   ├── Include/
-│   ├── Lib/
-│   ├── Scripts/
-│   └── pyvenv.cfg
+├── env/                      # Python virtual environment
 │
 ├── instance/
-│   └── enginex.db             # SQLite Database for bookings storage
+│   └── enginex.db            # SQLite database
 │
-├── screenshots/               # Project UI screenshots used in README
+├── screenshots/              # README screenshots
 │
-├── static/                    # Static assets (Frontend resources)
-│   ├── CSS/
-│   ├── Img/
-│   └── JS/
+├── static/
+│   ├── css/
+│   ├── img/
+│   └── js/
 │
-├── templates/                 # HTML templates for routing
+├── templates/
+│   ├── auth/
+│   │   ├── login.html
+│   │   ├── register.html
+│   │   └── profile.html
+│   │
+│   ├── shop/
+│   │   ├── dashboard.html
+│   │   ├── create.html
+│   │   ├── services.html
+│   │   └── bookings.html
+│   │
 │   ├── index.html
 │   ├── car-selection.html
-│   ├── modifications.html
-│   ├── bookings.html
+│   └── modifications.html
 │
-├── main.py                    # Backend app (Flask server file)
-├── requirements.txt           # Python dependencies
-├── sms_log.txt                # SMS logging file (if using OTP/SMS)
-├── bookings_log.txt           # Service bookings log
-└── README.md                  # Project documentation
+├── main.py                   # Flask backend
+├── requirements.txt
+├── bookings_log.txt
+├── sms_log.txt
+└── README.md
 
 ---
 
 ## 📡 API Endpoints
 
 | Method | Endpoint | Description |
-|--------|----------|-------------|
-| **POST** | `/api/bookings` | Create booking & send Telegram alert |
-| **GET** | `/api/bookings` | Retrieve booking list |
+|------|----------|-------------|
+| POST | `/api/bookings` | Create booking and send notification |
+| GET  | `/api/bookings` | Retrieve all bookings |
+| POST | `/api/login` | User authentication |
+| POST | `/api/register` | User registration |
+| POST | `/api/shop/services/add` | Add shop services |
 
-### Example POST Body
+---
+
+### Sample Booking Request
+
 ```json
 {
   "customer": {
-    "name": " Singh",
+    "name": "Adarsh Singh",
     "phone": "9876543210",
     "email": "xyz@gmail.com",
     "date": "2025-01-20",
@@ -125,9 +160,8 @@ EngineX/
     "car": "BMW 3 Series",
     "total": 85000,
     "services": [
-      {"name": "ECU Remap", "price": 25000},
-      {"name": "Performance Exhaust", "price": 60000}
+      { "name": "ECU Remap", "price": 25000 },
+      { "name": "Performance Exhaust", "price": 60000 }
     ]
   }
 }
-
