@@ -116,16 +116,16 @@
                 <div class="swiper-wrapper">
                     <!-- Slide 1 -->
                     <div class="swiper-slide">
-                        <img src="/static/Img/home3.png" class="home__bg" alt="">
+                        <img src="{{ url_for('static', filename='Img/home3.png') }}" class="home__bg" alt="">
                     </div>
                     <!-- Slide 2 -->
                     <div class="swiper-slide">
-                        <img src="/static/Img/home 1.png" class="home__bg" alt="">
+                        <img src="{{ url_for('static', filename='Img/home1.png') }}" class="home__bg" alt="">
                     </div>
 
                     <!-- slide 3-->
                     <div class="swiper-slide">
-                        <img src="/static/Img/home2.png" class="home__bg" alt="">
+                        <img src="{{ url_for('static', filename='Img/home2.png') }}" class="home__bg" alt="">
                     </div>
 
                 </div>
@@ -603,6 +603,6 @@
     <script src="/static/js/mixitup.min.js"></script>
 
     <!--=============== MAIN JS ===============-->
-    <script src="/static/js/main.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
