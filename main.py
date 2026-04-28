@@ -9,7 +9,7 @@ import secrets
 import requests
 import json
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', template_folder='templates')
 CORS(app)
 
 app.config['SECRET_KEY'] = 'enginex-secret-key-2024'
