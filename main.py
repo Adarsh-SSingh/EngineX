@@ -107,8 +107,13 @@ def send_telegram_notification(booking_data):
     Sends booking notification message to the registered Telegram bot channel.
     """
     try:
-        bot_token = "8490189596:AAGl9CH9uOv_E7IYx-GHYb5sGba1j4kSN2c"
-        chat_id = "903399770"   
+        bot_token = os.environ.get("BOT_TOKEN")
+        chat_id = os.environ.get("CHAT_ID")
+
+        if not bot_token or not chat_id:
+            print("Telegram credentials missing")
+            return False
+
         message = f"""
 🚗 New Booking Received
 
